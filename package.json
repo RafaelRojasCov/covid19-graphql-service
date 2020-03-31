@@ -1,7 +1,15 @@
 {
   "devDependencies": {
+    "poetic": "^1.5.0",
     "serverless-offline": "^6.1.2",
     "serverless-plugin-typescript": "^1.1.9",
     "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "code:check": "yarn code:lint; yarn code:format --check",
+    "code:clean": "yarn code:lint --fix; yarn code:format --write",
+    "code:lint": "eslint --ext .js,.jsx,.ts,.tsx \"src/\"",
+    "code:format": "prettier './src/**/**.{js,jsx,ts,tsx}'",
+    "code:check:rules": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   }
 }
