@@ -1,5 +1,6 @@
-import { getCountryData } from '../services/corona-tracker';
+import countryHandler from '../handlers/country';
 
+const { getCountryData } = countryHandler;
 const resolvers = {
   getCountryData: (_: any, { countryCode }: any) => getCountryData(countryCode),
 };
