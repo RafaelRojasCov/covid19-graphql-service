@@ -24,6 +24,10 @@ provider:
   name: aws
   runtime: nodejs12.x
 
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -58,15 +62,23 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - http:
-#          path: users/create
-#          method: get
+  handler:
+    handler: handler.handler
+    environment:
+      CORONATRACKER_API_BASE_URL_V2: https://api.coronatracker.com/v2
+      CORONATRACKER_API_BASE_URL_V3: https://api.coronatracker.com/v3
+    #    The following are a few example events you can configure
+    #    NOTE: Please make sure to change your handler code to work with those events
+    #    Check the event documentation for details
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
