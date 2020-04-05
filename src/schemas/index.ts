@@ -8,6 +8,7 @@ const typeDefs = gql`
     getAllCountryPrincipalData: [CountryPrincipalData]
     getTopCountryData(limit: Int!): [CountryDataResponse]
     getCountryData(countryCode: String!): [CountryDataResponse]
+    getDataWithCoordinates(lat: Float!, lng: Float!): [CountryDataResponse]
   }
 
   type Mutation {
