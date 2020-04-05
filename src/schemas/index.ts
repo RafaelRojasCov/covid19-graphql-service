@@ -8,6 +8,11 @@ const typeDefs = gql`
     getAllCountryPrincipalData: [CountryPrincipalData]
     getTopCountryData(limit: Int!): [CountryDataResponse]
     getCountryData(countryCode: String!): [CountryDataResponse]
+    getCountryDataWithDates(
+      countryCode: String!
+      startDate: String!
+      endDate: String!
+    ): [CountryDataWithDateResponse]
     getDataWithCoordinates(lat: Float!, lng: Float!): [CountryDataResponse]
   }
 

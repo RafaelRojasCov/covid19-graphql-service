@@ -18,6 +18,15 @@ const typeDefs = gql`
     PR: String
     lastUpdated: String
   }
+
+  type CountryDataWithDateResponse {
+    countryCode: String
+    country: String
+    totalConfirmed: Int
+    totalDeaths: Int
+    totalRecovered: Int
+    lastUpdated: String
+  }
 `;
 
 export default typeDefs;
